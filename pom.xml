@@ -11,11 +11,16 @@
     <groupId>com.myproject</groupId>
     <artifactId>mymall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>mymall</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <mall-commons.version>0.0.1-SNAPSHOT</mall-commons.version>
+        <mysql-connector.version>8.0.19</mysql-connector.version>
+        <pagehelper-starter.version>1.3.0</pagehelper-starter.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
     </properties>
 
     <dependencies>
@@ -36,6 +41,37 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+<!--            mall 通用模块  -->
+            <dependency>
+                <groupId>com.mymall</groupId>
+                <artifactId>commons</artifactId>
+                <version>${mall-commons.version}</version>
+            </dependency>
+
+
+<!--            mysql 数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+<!--            Mybatis分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
